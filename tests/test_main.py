@@ -87,13 +87,13 @@ class TestSortingSpirallyAlgorithm:
             [-1, -1, 0], [-1, 0, 0], [-1, 1, 0], [0, 1, 0], [1, 1, 0], [1, 0, 0], [1, -1, 0], [0, -1, 0], [0, 0, 0])
 
         points_order = sort_points_spirally([p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,
-                                            p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24])
+                                            p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24], True)
         assert points_order == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                                 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
         points_order = sort_points_spirally([p12, p3, p19, p7, p1, p22, p0, p15, p8, p20,
                                              p4, p17, p10, p14, p6, p11, p2, p23, p5, p18,
-                                             p9, p21, p16, p13, p24])
+                                             p9, p21, p16, p13, p24], True)
         assert points_order == [6, 4, 16, 1, 10, 18, 14, 3, 8, 20,
                                 12, 15, 0, 23, 13, 7, 22, 11, 19, 2, 9, 21, 5, 17, 24]
 

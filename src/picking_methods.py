@@ -17,16 +17,12 @@ def pick_next_point_rotated_atan2(points: List[List[float]], indexed_points: Lis
             atan2(c*(p[0]-pivot_x) + s*(pivot_y-p[1]), c*(p[1]-pivot_y)+s*(p[0]-pivot_x)), 4)
         unsorted_indexed_angles.append({"angle": angle, "index": i})
 
-    indexed_angles = sorted(unsorted_indexed_angles,
+    indexed_angles = [ip for ip in unsorted_indexed_angles if ip["angle"]>=-1.5708]
+    min_indexed_angle = min(indexed_angles,
                             key=lambda ia: (ia["angle"], (points[ia["index"]][0]*s + points[ia["index"]][1]*c),
-                                            (points[ia["index"]][0]*c - points[ia["index"]][1]*s), points[ia["index"]][2]),
-                            reverse=False)
+                                            (points[ia["index"]][0]*c - points[ia["index"]][1]*s), points[ia["index"]][2]))
 
-    next_pivot_point_index = indexed_angles[0]["index"]
-    for ia in indexed_angles:
-        next_pivot_point_index = ia["index"]
-        if ia["angle"] >= -1.5708:
-            break
+    next_pivot_point_index = min_indexed_angle["index"]
 
     return next_pivot_point_index
 
@@ -46,14 +42,13 @@ def pick_next_point_shifted_scalar_product(points: List[List[float]], indexed_po
             {"angle": angle, "index": i, "sign": sign})
 
     # there's a problem to understand when we need to take the max/min x and y coordinate at the case when angles are the same
-    indexed_angles = sorted(unsorted_indexed_angles, key=lambda ia: (
-        ia["angle"], -pivot_sign*(points[ia["index"]][0]-x_mean), pivot_sign*(points[ia["index"]][1]-y_mean), points[ia["index"]][2]),
-        reverse=False)
+    min_indexed_angle = min(unsorted_indexed_angles, key=lambda ia: (
+        ia["angle"], -pivot_sign*(points[ia["index"]][0]-x_mean), pivot_sign*(points[ia["index"]][1]-y_mean), points[ia["index"]][2]))
 
-    print(f"{pivot_sign}, {indexed_angles}" if pivot_x == -
+    print(f"{pivot_sign}, {min_indexed_angle}" if pivot_x == -
           2 and pivot_y == -1 else "")
 
-    return indexed_angles[0]["index"]
+    return min_indexed_angle["index"]
 
 
 pick_next_point = {
