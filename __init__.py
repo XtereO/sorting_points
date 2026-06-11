@@ -1,1 +1,1 @@
-from src.main import sort_points_spirally
+from .src import sort_points_spirally, sort_points_parallelly_x

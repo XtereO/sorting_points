@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sorting_points_spirally"
+name = "sorting_points"
 version = "1.0.0"
 description = "This algorithm sorts points in xy flat spirally"
 authors = [{ name = "XtereO", email = "fake@gmail.com" }]

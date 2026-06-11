@@ -1,5 +1,5 @@
 from copy import deepcopy
-from main import sort_points_spirally
+from sorting_spirally import sort_points_spirally
 
 
 class TestSortingSpirallyAlgorithm:
