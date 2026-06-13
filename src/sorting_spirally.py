@@ -44,7 +44,7 @@ def sort_points_spirally(points: List[List[float]], showing_result=False) -> Lis
         res.append(next_pivot_point_index)
         print(
             f'\rSorted points: {len(res)}/{number_points} (left {len(indexed_points)})', end='')
-    print(f'\rPoints have been sorted: {len(res)}') # these spaces are required to refresh left part of the last print 
+    print(f'\rPoints have been sorted: {len(res)}') 
 
     if (showing_result):
         x_ordered = list(map(lambda i: points[i][0], res))
