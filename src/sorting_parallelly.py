@@ -28,10 +28,10 @@ def _sort_points_parallelly(points: List[List[float]], max_delta=1, showing_resu
         if p[1][second_axis]-fp[1][second_axis] < max_delta:
             res[-1].append(p[0])
         else:
-            res[-1] = _sort_group_points_axis(res[-1], points, first_axis)
+            res[-1] = _sort_group_points_axis(res[-1], points, first_axis, second_axis)
             fp = p
             res.append([fp[0]])
-    res[-1] = _sort_group_points_axis(res[-1], points, first_axis)
+    res[-1] = _sort_group_points_axis(res[-1], points, first_axis, second_axis)
 
     if (showing_result):
         x_groups = []
@@ -52,7 +52,5 @@ def _sort_points_parallelly(points: List[List[float]], max_delta=1, showing_resu
     return res
 
 
-def _sort_group_points_axis(indexed_group, points, axis=0):
-    first_axis = axis
-    second_axis = 1 if axis == 0 else 0
+def _sort_group_points_axis(indexed_group, points, first_axis=0, second_axis=1):
     return sorted(indexed_group, key=lambda i: (points[i][first_axis], points[i][second_axis], points[i][2]))
