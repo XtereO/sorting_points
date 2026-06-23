@@ -1,6 +1,18 @@
 from typing import List, Tuple, TypeVar
 
 
+def shift_point(indexed_points, indexed_point):
+    pivot_x, pivot_y, _pivot_z = indexed_point[1]
+    x_min, x_max, y_min, y_max = get_boundaries_indexed_points(
+        [*indexed_points, indexed_point])
+    y_mean = y_min + ((y_max-y_min)/2)
+    x_mean = x_min + ((x_max-x_min)/2)
+    shifted_pivot_x = pivot_x - x_mean
+    shifted_pivot_y = pivot_y - y_mean
+
+    return (shifted_pivot_x, shifted_pivot_y)
+
+
 def get_boundaries_indexed_points(indexed_points: List[Tuple]) -> Tuple[float]:
     if not indexed_points or len(indexed_points) == 1:
         return (0, 0, 0, 0)
@@ -16,7 +28,10 @@ def get_boundaries_indexed_points(indexed_points: List[Tuple]) -> Tuple[float]:
 
     return (x_min, x_max, y_min, y_max)
 
+
 T = TypeVar("T")
+
+
 def pop_by_value(lst: List[T], value: T) -> int:
     try:
         index = lst.index(value)

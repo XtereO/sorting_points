@@ -21,7 +21,7 @@ class TestSortingParallellyYAlgorithm:
             ([[1, 1, 1], [1.5, 1.3, 1], [2, 1, 1], [2.5, 1.5, 1], [3, 1, 1],
               [1, 2, 1], [1.5, 2.5, 1], [2, 2, 1], [2.5, 2.3, 1], [3, 2, 1],
               [2, 3, 1], [2.5, 3.5, 1], [3, 3, 1], [3.5, 3.5, 1], [4, 3, 1]],
-             default_max_delta, True, [[0, 1, 5, 6], [2, 3, 7, 8, 10, 11], [4, 9, 12, 13], [14]])
+             default_max_delta, False, [[0, 1, 5, 6], [2, 3, 7, 8, 10, 11], [4, 9, 12, 13], [14]])
         ]
 
     def test_base_cases(self, sorting_points_test_base_cases):
