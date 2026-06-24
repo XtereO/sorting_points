@@ -3,15 +3,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def sort_points_parallelly_x(points: List[List[float]], max_delta=1, showing_result=False):
+def sort_points_parallelly_x(points: List[List[float]], max_delta=1, showing_result=False) -> List[List[int]]:
     return _sort_points_parallelly(points, max_delta, showing_result, 0)
 
 
-def sort_points_parallelly_y(points: List[List[float]], max_delta=1, showing_result=False):
+def sort_points_parallelly_y(points: List[List[float]], max_delta=1, showing_result=False) -> List[List[int]]:
     return _sort_points_parallelly(points, max_delta, showing_result, 1)
 
 
-def _sort_points_parallelly(points: List[List[float]], max_delta=1, showing_result=False, axis=0):
+def _sort_points_parallelly(points: List[List[float]], max_delta=1, showing_result=False, axis=0) -> List[List[int]]:
     if (len(points) == 0):
         return []
 

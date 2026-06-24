@@ -1,7 +1,7 @@
 from typing import List, Tuple, TypeVar
 
 
-def shift_point(indexed_points, indexed_point):
+def shifted_point(indexed_points: List[Tuple], indexed_point: Tuple[int, List[float]]) -> Tuple[float, float]:
     pivot_x, pivot_y, _pivot_z = indexed_point[1]
     x_min, x_max, y_min, y_max = get_boundaries_indexed_points(
         [*indexed_points, indexed_point])
